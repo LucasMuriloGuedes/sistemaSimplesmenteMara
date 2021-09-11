@@ -1,31 +1,25 @@
-package com.lucasmurilo.simplesmentemara.domain;
+package com.lucasmurilo.simplesmentemara.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.lucasmurilo.simplesmentemara.entities.Categoria;
+import com.lucasmurilo.simplesmentemara.entities.Produto;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
-@Entity
-public class Produto implements Serializable {
+public class ProdutoDTO implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
     private Double preco;
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    @JsonIgnore
-    private Categoria categoria;
 
-    public Produto(){
+
+    public ProdutoDTO(){
 
     }
 
-    public Produto(Integer id, String nome, Double preco) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
+    public ProdutoDTO(Produto produto) {
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.preco = produto.getPreco();
     }
 
     public Integer getId() {
@@ -51,4 +45,5 @@ public class Produto implements Serializable {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+
 }

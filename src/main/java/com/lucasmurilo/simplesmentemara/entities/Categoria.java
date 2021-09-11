@@ -1,4 +1,6 @@
-package com.lucasmurilo.simplesmentemara.domain;
+package com.lucasmurilo.simplesmentemara.entities;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,11 +15,16 @@ public class Categoria implements Serializable {
     private Integer id;
     private String nome;
 
-    @OneToMany(mappedBy = "categoria")
+    @ManyToMany(mappedBy = "categoria" )
     private List<Produto> produtos = new ArrayList<>();
 
     public Categoria(){
 
+    }
+
+    public Categoria(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
 
     public Integer getId() {
@@ -36,10 +43,8 @@ public class Categoria implements Serializable {
         this.nome = nome;
     }
 
-    public Categoria(Integer id, String nome) {
 
-
-        this.id = id;
-        this.nome = nome;
+    public List<Produto> getProdutos() {
+        return produtos;
     }
 }
