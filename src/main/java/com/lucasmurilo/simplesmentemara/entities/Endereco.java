@@ -17,7 +17,6 @@ public class Endereco {
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
-
     public Endereco(){
 
     }
@@ -78,4 +77,5 @@ public class Endereco {
     public void setCidade(Cidade cidade) {
         this.cidade = cidade;
     }
+
 }
