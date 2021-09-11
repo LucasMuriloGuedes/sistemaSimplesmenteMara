@@ -1,7 +1,9 @@
 package com.lucasmurilo.simplesmentemara.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Cliente {
@@ -15,7 +17,10 @@ public class Cliente {
     @ManyToOne
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
-    
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos = new ArrayList<>();
+
     public Cliente(){
 
     }
